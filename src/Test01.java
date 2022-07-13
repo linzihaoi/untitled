@@ -7,7 +7,7 @@ public class Test01 {
         System.out.println("hello world");
         System.out.println("hello world1234");
         System.out.println("hello fox");
-        System.out.println("hello master");
+        System.out.println("手动合并冲突");
     }
 
     //
