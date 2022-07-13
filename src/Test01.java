@@ -4,6 +4,28 @@ import java.util.List;
 public class Test01 {
 
     public static void main(String[] args) {
+        System.out.println("hello world");
+        System.out.println("hello world1234");
+        System.out.println("hello fox");
+    }
+
+    //
+    public static List<SkyWechatMenu> deepbutton(List<SkyWechatMenu> data, String id){
+        List<SkyWechatMenu> skyWechatMenuListTmp = new ArrayList<>();
+        for (SkyWechatMenu item : data) {
+            String parentId = item.getParentId();
+            if(id == null && parentId == null){
+                item.setSubButtons(deepbutton(data, item.getId()));
+                skyWechatMenuListTmp.add(item);
+            }else if(parentId != null && parentId.equals(id)){
+                item.setSubButtons(deepbutton(data, item.getId()));
+                skyWechatMenuListTmp.add(item);
+            }
+
+        }
+        return skyWechatMenuListTmp;
+    }
+
 //        List<SkyWechatMenu> data = new ArrayList<>();
 //        SkyWechatMenu s1 = new SkyWechatMenu();
 //        s1.setId("1");
@@ -35,25 +57,4 @@ public class Test01 {
 //        s6.setParentId("2");
 //
 //        System.out.println(deepbutton(data,null));
-        System.out.println("hello world");
-    }
-
-    //
-    public static List<SkyWechatMenu> deepbutton(List<SkyWechatMenu> data, String id){
-        List<SkyWechatMenu> skyWechatMenuListTmp = new ArrayList<>();
-        for (SkyWechatMenu item : data) {
-            String parentId = item.getParentId();
-            if(id == null && parentId == null){
-                item.setSubButtons(deepbutton(data, item.getId()));
-                skyWechatMenuListTmp.add(item);
-            }else if(parentId != null && parentId.equals(id)){
-                item.setSubButtons(deepbutton(data, item.getId()));
-                skyWechatMenuListTmp.add(item);
-            }
-
-        }
-        return skyWechatMenuListTmp;
-    }
-
-
 }
