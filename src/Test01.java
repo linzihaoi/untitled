@@ -9,6 +9,7 @@ public class Test01 {
         System.out.println("hello fox");
         System.out.println("手动合并冲突");
         System.out.println("pull test2222");
+        System.out.println("写 test2222");
     }
 
     //
